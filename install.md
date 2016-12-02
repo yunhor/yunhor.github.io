@@ -110,3 +110,56 @@ dpkg -S emacs
 再全部删除：
 apt-get remove emacs24-bin-common emacs24-common emacs24-common-non-dfsg emacs24-nox
 gsettings set com.canonical.Unity.Launcher launcher-position Bottom
+
+
+安装WPS for Linux。下载地址：http://community.wps.cn/download/。选择alpha版deb包。
+
+   Linux 64 bit需要通过安装32 bit的库来获得支持。
+
+   #sudo apt-get install ia32-libs
+
+   但是输入命令后系统提示ia32-libs软件包缺失，需要用lib32ncurses5和lib32z1代替。于是运行
+
+   #sudo apt-get install lib32ncurses5
+
+   #sudo apt-get install lib32z1。
+
+   再dpkg安装程序安装包
+
+   #sudo dpkg -i wps-office_10.1.0.5672~a21_amd64.deb
+   提示wps-office 依赖于 libpng12-0；然而：未安装软件包 libpng12-0。该软件包已丢失可用ttf-mscorefonts-installer代替。
+
+   要先运行下面的命令将已安装的wps-office卸载：
+
+   #apt-get -f install
+
+   然后安装依赖关系：
+
+   #sudp apt-get install ttf-mscorefonts-installer
+
+   之后libpng12-0依赖关系还是出错，到下面的地址下载libpng12-0然后安装：
+
+   https://packages.debian.org/zh-cn/wheezy/amd64/libpng12-0/download。
+
+   #sudo dpkg -i libpng12-0_1.2.49-1+deb7u2_amd64.deb
+
+   安装好后到Dash中搜索WPS启动并锁定到启动器，会报错显示缺失字体：
+
+   Symbol，Wingdings，Wingdings2，Wingdings3，MT-Extra
+
+   进入home文件夹，按Ctrl+h显示所有文件夹，查看有没有.fonts文件夹，如果没有就创建一个，然后到网上下载相关字体放入该文件夹中
+
+7.安装vim编辑器。sudo apt-get install vim
+
+8.安装unrar。sudo apt-get install rar unrar
+
+9.删除Amazon的链接：sudo apt-get remove unity-webapps-common
+
+10.安装Git：sudo apt-get install git
+
+11.主题美化，安装Unity Tweak Tool：到Ubuntu软件中心搜索Unity Tweak Tool并安装
+
+### wps for linux 安装出错 
+### flyspell 出错的解决方案
+    sudo vi /etc/aspell.conf 
+    lang en
