@@ -10,8 +10,7 @@ export LANG=zh_CN.UTF-8
 xdg-user-dirs-gtk-update
 此时再次弹出界面，选择“保留旧的名称”
 
-
-ssh-keygen -t rsa -C "email@"
+ssh-keygen -t rsa -C "email"
 
 sudo add-apt-repository ppa:git-core/ppa  
 sudo apt-get update  
@@ -44,7 +43,7 @@ export NODE_HOME=/opt/node
 export PATH=$PATH:$NODE_HOME/bin
 export NODE_PATH=$PATH:$NODE_HOME/lib/node_modules
 source ~/.bashrc
-
+设置PATH后，hexo等全局插件运行才不会找不到文件。
 
 tar zvxf go-
 mv go- ~/
